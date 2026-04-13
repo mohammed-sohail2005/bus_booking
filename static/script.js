@@ -79,18 +79,26 @@ document.addEventListener('DOMContentLoaded', () => {
             "Total Fare": `₹${total}`
         };
 
-        ticketDetails.innerHTML = Object.entries(details).map(([label, val]) => `
-            <div class="ticket-row">
-                <span class="label">${label}</span>
-                <span class="val">${val}</span>
-            </div>
-        `).join('');
+        // --- SEND TO BACKEND (Flask) ---
+        fetch('/book', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(details)
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log("Server response:", data);
+            
+            // Show Success Modal
+            ticketDetails.innerHTML = Object.entries(details).map(([label, val]) => `
+                <div class="ticket-row">
+                    <span class="label">${label}</span>
+                    <span class="val">${val}</span>
+                </div>
+            `).join('');
 
-        successModal.style.display = 'grid';
-        
-        // Log to console as "Terminal" output for the user
-        console.log(`%c [SUCCESS] Booking Confirmed - ID: ${ticketId} `, 'background: #10b981; color: #fff; font-weight: bold;');
-        console.table(details);
+            successModal.style.display = 'grid';
+        });
     });
 
     // Reset handler
