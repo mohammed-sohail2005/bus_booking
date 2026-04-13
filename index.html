@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BusTicket • Modern Booking Experience</title>
+    <meta name="description" content="Book your bus tickets with a premium, fast, and easy interface. Experience the next level of travel booking.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <nav class="glass-header">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="icon">🚌</span>
+                <span class="text">Bus<span>Ticket</span></span>
+            </div>
+            <div class="nav-links">
+                <a href="#booking" class="active">Book Now</a>
+                <a href="#">My Bookings</a>
+                <a href="#">Support</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1>Travel <span>Beyond</span> Boundaries</h1>
+                <p>Experience the most premium bus booking interface. Secure, fast, and flawlessly designed for your next journey.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="number">10k+</span>
+                        <span class="label">Bookings</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="number">50+</span>
+                        <span class="label">Premium Routes</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-card-container" id="booking">
+                <div class="form-card glass">
+                    <div class="card-header">
+                        <h2>Reserve Your Seat</h2>
+                        <p>Fill in the details below to generate your ticket</p>
+                    </div>
+
+                    <form id="bookingForm" class="booking-grid">
+                        <!-- Passenger Name -->
+                        <div class="input-group full-width">
+                            <label for="name">Passenger Name</label>
+                            <input type="text" id="name" placeholder="Enter full name" required>
+                        </div>
+
+                        <!-- Age & Gender -->
+                        <div class="input-group">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" min="1" max="120" placeholder="Years" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="gender">Gender</label>
+                            <select id="gender" required>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="input-group full-width">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="10-digit mobile number" required pattern="[0-9]{10}">
+                        </div>
+
+                        <!-- Route -->
+                        <div class="input-group full-width">
+                            <label for="route">Select Route</label>
+                            <select id="route" required></select>
+                        </div>
+
+                        <!-- Date & Bus Type -->
+                        <div class="input-group">
+                            <label for="date">Travel Date</label>
+                            <select id="date" required></select>
+                        </div>
+                        <div class="input-group">
+                            <label for="busType">Bus Type</label>
+                            <select id="busType" required></select>
+                        </div>
+
+                        <!-- Seats & Preference -->
+                        <div class="input-group">
+                            <label for="seats">Seats</label>
+                            <input type="number" id="seats" min="1" max="10" value="1" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="seatPref">Preference</label>
+                            <select id="seatPref" required>
+                                <option value="Window">Window</option>
+                                <option value="Aisle">Aisle</option>
+                                <option value="No Preference">No Preference</option>
+                            </select>
+                        </div>
+
+                        <div class="form-footer full-width">
+                            <div class="fare-display">
+                                <span>Estimated Fare:</span>
+                                <span class="amount" id="fareTotal">₹0</span>
+                            </div>
+                            <div class="btn-group">
+                                <button type="reset" class="btn btn-secondary">Reset</button>
+                                <button type="submit" class="btn btn-primary">Book Now</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Success Modal -->
+    <id class="modal-overlay" id="successModal">
+        <div class="modal glass">
+            <div class="success-icon">✓</div>
+            <h2>Booking Confirmed!</h2>
+            <div class="ticket-details" id="ticketDetails">
+                <!-- Details injected via JS -->
+            </div>
+            <button class="btn btn-primary" onclick="closeModal()">Great, Thanks!</button>
+        </div>
+    </id>
+
+    <footer class="site-footer">
+        <p>© 2026 BusTicket Experience • Crafted with Excellence</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
